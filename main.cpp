@@ -12,8 +12,8 @@
 
 int main()
 {
-    Test<int>({ 1, 2, 3 }, { 10, 1, 5, 2 }, { false, true, false, true });
-    // Run<int>();
+    RunTest<int>({ 1, 2, 3 }, { 10, 1, 5, 2 }, { false, true, false, true });
+    // RunApplication<int>();
     return 0;
 }
 
