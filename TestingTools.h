@@ -25,7 +25,7 @@ std::vector<bool> CheckContainment(const CheckerType& checker,
 }
 
 template <typename ValueType>
-bool Test(const std::vector<ValueType>& values,
+bool RunTest(const std::vector<ValueType>& values,
     const std::vector<ValueType>& numbers,
     const std::vector<bool>& answers)
 {
@@ -53,7 +53,7 @@ bool Test(const std::vector<ValueType>& values,
 }
 
 template <typename ValueType>
-void Run()
+void RunApplication()
 {
     std::ios_base::sync_with_stdio(false);
     std::cin.tie(nullptr);
