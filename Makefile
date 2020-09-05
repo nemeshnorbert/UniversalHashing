@@ -23,6 +23,7 @@ $(TARGET): $(OBJECTS)
 
 $(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 	@mkdir -p $(BUILDDIR)
+	@mkdir -p $(TARGETDIR)
 	$(CC) $(CFLAGS) $(INC) -c -o $@ $<
 
 clean:
