@@ -11,16 +11,16 @@ void Run()
     using ValueType = int;
     FixedSet<ValueType> checker;
     size_t fixedSetSize = 0;
-    std::cout << "Enter fixed set size:\n";
+    std::cout << "Enter fixed set size: ";
     std::cin >> fixedSetSize;
-    std::cout << "Enter elements of the fixed set\n";
+    std::cout << "Enter elements of the fixed set: ";
     checker.Initialize(ReadValues<ValueType>(std::cin, fixedSetSize));
-    std::cout << "Enter test set size:\n";
+    std::cout << "Enter test set size: ";
     size_t testSetSize = 0;
     std::cin >> testSetSize;
-    std::cout << "Enter numbers you want to check belong to the fixed set\n";
+    std::cout << "Enter numbers you want to check belong to the fixed set: ";
     std::vector<ValueType> numbers = ReadValues<ValueType>(std::cin, testSetSize);
-    std::cout << "Result:\n";
+    std::cout << "Result: ";
     for (auto iterator = numbers.begin(); iterator != numbers.end(); ++iterator) {
         if (checker.Contains(*iterator))
         {
