@@ -34,14 +34,4 @@ void WriteValues(std::ostream& outputStream,
     outputStream << '\n';
 }
 
-// Writes results of checking to the stream. true -> "Yes", false -> "No"
-void WriteResponses(std::ostream& outputStream, const std::vector<bool>& responses)
-{
-    for (size_t index = 0; index < responses.size(); ++index)
-    {
-        outputStream << (responses[index] ? "Yes" : "No") << '\n';
-    }
-}
-
-
 #endif

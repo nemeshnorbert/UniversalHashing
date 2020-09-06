@@ -7,7 +7,7 @@ void Run()
         << "Given a set of integers we perform an O(n^2) preprocessing"
         << " to produce a fixed set.\n"
         << "This structure allows us in O(1) time determine if a given"
-        << " number belongs to a fixed set.\n"
+        << " number belongs to a fixed set.\n";
     using ValueType = int;
     FixedSet<ValueType> checker;
     size_t fixedSetSize = 0;
