@@ -5,6 +5,7 @@
 #include <vector>
 #include <numeric>
 #include <algorithm>
+#include <unordered_set>
 
 #include "universal_hash_helper.h"
 
@@ -38,9 +39,10 @@ public:
     // Initializes a set with given values. Note: values must not contain duplicates!
     void Initialize(const std::vector<ValueType>& values)
     {
+        std::vector<ValueType> uniques = GetUniques(values);
         table_.clear();
-        InitializeFirstLevelTable(values);
-        InitializeAllSecondLevelTables(values);
+        InitializeFirstLevelTable(uniques);
+        InitializeAllSecondLevelTables(uniques);
     }
 
     // Checks if value belongs to a fixed_set
@@ -60,6 +62,12 @@ public:
     }
 
 private:
+    std::vector<ValueType> GetUniques(const std::vector<ValueType>& values)
+    {
+        std::unordered_set<ValueType> collection(values.begin(), values.end());
+        return std::vector<ValueType>(collection.begin(), collection.end());
+    }
+
     // Initializes first level hash table.
     // Actually there is no values in the table after this call
     void InitializeFirstLevelTable(const std::vector<ValueType>& values)
