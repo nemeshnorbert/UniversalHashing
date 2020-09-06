@@ -47,13 +47,17 @@ bool RunTest(const std::vector<ValueType>& values, const std::vector<ValueType>&
             return false;
         }
     }
-    stream << "Ok\n";
+    stream << "Test passed\n";
     return true;
 }
 
 int main() {
-    std::vector<int> values = GetRandomValues(0, 10000, 100);
-    std::vector<int> numbers = GetRandomValues(-10000, 10000, 100000);
-    bool ok = RunTest<int>(values, numbers);
-    return ok ? 0 : 1;
+    for (int attempt = 0; attempt < 10; ++attempt)
+    {
+        if(!RunTest(GetRandomValues(0, 10000, 100), GetRandomValues(-10000, 10000, 100000)))
+        {
+            return 1;
+        }
+    }
+    return 0;
 }

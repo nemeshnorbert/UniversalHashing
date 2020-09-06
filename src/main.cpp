@@ -1,12 +1,14 @@
 #include "fixed_set.h"
 #include "io_tools.h"
 
-// Given a fixed set of integers we need to process in O(1) time a lot of
-// requests to determine whether a new number belongs to a given fixed set of integers.
-
-template <typename ValueType>
 void Run()
 {
+    std::cout
+        << "Given a set of integers we perform an O(n^2) preprocessing"
+        << " to produce a fixed set.\n"
+        << "This structure allows us in O(1) time determine if a given"
+        << " number belongs to a fixed set."
+    using ValueType = int;
     FixedSet<ValueType> checker;
     size_t fixedSetSize = 0;
     std::cout << "Enter fixed set size:\n";
@@ -34,7 +36,7 @@ void Run()
 
 int main()
 {
-    Run<int>();
+    Run();
     return 0;
 }
 
