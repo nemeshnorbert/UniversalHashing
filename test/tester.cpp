@@ -1,4 +1,5 @@
 #include <cassert>
+#include <random>
 #include <set>
 #include "fixed_set.h"
 #include "io_tools.h"
