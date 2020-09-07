@@ -21,13 +21,15 @@ std::vector<ValueType> GetRandomValues(const ValueType& min, const ValueType& ma
 
 
 template <typename ValueType>
-bool RunTest(const std::vector<ValueType>& values, const std::vector<ValueType>& numbers)
+bool RunTest(
+        std::ostream& stream,
+        const std::vector<ValueType>& values,
+        const std::vector<ValueType>& numbers)
 {
     FixedSet<ValueType> checker;
     checker.Initialize(values);
     std::set<ValueType> collection = std::set<ValueType>(values.begin(), values.end());
 
-    auto& stream = std::cout;
     for (auto iterator = numbers.begin(); iterator != numbers.end(); ++iterator)
     {
         const auto number = *iterator;
@@ -55,7 +57,7 @@ bool RunTest(const std::vector<ValueType>& values, const std::vector<ValueType>&
 int main() {
     for (int attempt = 0; attempt < 10; ++attempt)
     {
-        if(!RunTest(GetRandomValues(0, 10000, 100), GetRandomValues(-10000, 10000, 100000)))
+        if(!RunTest(std::cout, GetRandomValues(0, 10000, 100), GetRandomValues(-1000, 1000, 10000)))
         {
             return 1;
         }
