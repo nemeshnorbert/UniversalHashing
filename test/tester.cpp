@@ -22,7 +22,7 @@ std::vector<ValueType> GetRandomValues(const ValueType& min, const ValueType& ma
 
 template <typename ValueType>
 bool RunTest(
-        std::ostream& stream,
+        std::ostream& out,
         const std::vector<ValueType>& values,
         const std::vector<ValueType>& numbers)
 {
@@ -37,7 +37,7 @@ bool RunTest(
         auto truth = (collection.find(number) != collection.end());
         if (decision != truth)
         {
-            stream
+            out
                 << "Error: value "
                 << number
                 << (truth ? " belongs " : " does not belong ")
@@ -45,12 +45,12 @@ bool RunTest(
                 << "while algorithm says it "
                 << (decision ? "is" : "is not")
                 << "\n";
-            stream << "Values:\n";
-            WriteValues(stream, values);
+            out << "Values:\n";
+            WriteValues(out, values);
             return false;
         }
     }
-    stream << "Test passed\n";
+    out << "Test passed\n";
     return true;
 }
 
