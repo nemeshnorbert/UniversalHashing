@@ -6,11 +6,21 @@
 
 
 template <typename ValueType>
+    using UniformDistribution = typename std::enable_if<
+    std::is_integral<ValueType>::value || std::is_floating_point<ValueType>::value,
+    typename std::conditional<
+        std::is_integral<ValueType>::value,
+        std::uniform_int_distribution<ValueType>,
+        std::uniform_real_distribution<ValueType>
+    >::type
+>::type;
+
+template <typename ValueType>
 std::vector<ValueType> GetRandomValues(const ValueType& min, const ValueType& max, size_t count)
 {
     assert(min <= max);
     static std::mt19937_64 engine;
-    std::uniform_int_distribution<ValueType> generator(min, max);
+    UniformDistribution<ValueType> generator(min, max);
     std::vector<ValueType> values;
     for (size_t index = 0; index < count; ++index)
     {
